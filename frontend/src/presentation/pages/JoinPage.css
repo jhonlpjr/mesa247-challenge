@@ -1,0 +1,7 @@
+.party-stepper { display: flex; align-items: center; height: 42px; border: 1px solid #c4d0d9; border-radius: 7px; background: #f3f6f8; overflow: hidden; }
+.party-stepper button { width: 42px; height: 100%; padding: 0; border: 0; border-radius: 0; background: transparent; color: #58738a; font-size: 15px; }
+.party-stepper button:hover:not(:disabled) { color: #151b22; opacity: 1; transform: none; }
+.party-stepper input { flex: 1; min-width: 0; padding: 8px; border: 0; border-radius: 0; background: transparent; text-align: center; appearance: textfield; }
+.party-stepper input:focus { box-shadow: none; }
+.party-stepper input::-webkit-outer-spin-button, .party-stepper input::-webkit-inner-spin-button { appearance: none; margin: 0; }
+.field-help { color: #71818e; font-size: 10px; line-height: 1.4; }

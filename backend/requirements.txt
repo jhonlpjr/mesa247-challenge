@@ -1,0 +1,9 @@
+fastapi>=0.110,<1
+uvicorn[standard]>=0.29,<1
+sqlalchemy>=2.0,<3
+pydantic-settings>=2.2,<3
+alembic>=1.13,<2
+pytest>=8,<9
+httpx>=0.27,<1
+# Windows does not provide the IANA time zone database used by zoneinfo.
+tzdata>=2024.1

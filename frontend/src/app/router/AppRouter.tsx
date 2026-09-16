@@ -1,0 +1,4 @@
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { DailyReportPage } from '../../presentation/pages/DailyReportPage'
+import { Layout } from '../../presentation/components/Layout'; import { JoinPage } from '../../presentation/pages/JoinPage'; import { EntryPage } from '../../presentation/pages/EntryPage'; import { HostPage } from '../../presentation/pages/HostPage'
+export function AppRouter() { return <BrowserRouter><Layout><Routes><Route path="/restaurants/:restaurantId/join" element={<JoinPage />} /><Route path="/queue/:entryId" element={<EntryPage />} /><Route path="/restaurants/:restaurantId/host" element={<HostPage />} /><Route path="/restaurants/:restaurantId/reports/daily" element={<DailyReportPage />} /><Route path="*" element={<Navigate to="/restaurants/1/join" replace />} /></Routes></Layout></BrowserRouter> }
