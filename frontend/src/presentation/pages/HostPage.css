@@ -1,9 +1,19 @@
 .host-page .host-heading { align-items: center; }
 .host-page .host-heading .intro { margin-top: 8px; }
 .host-page .queue-table { border-radius: 16px; }
+.host-page .table-head { text-align: center; }
+.host-page .table-row { text-align: center; }
+.host-page .table-row > span { text-align: center; }
+.host-page .table-row small { text-align: center; }
+.host-page .drag-handle, .host-page .row-actions { justify-self: center; }
+.host-page .row-actions { justify-content: center; }
+.host-page .queue-summary { display: flex; justify-content: flex-end; align-items: baseline; gap: 4px; padding: 14px 20px 11px; color: #71818e; font-size: 12px; }
+.host-page .queue-summary strong { color: #28678f; }
 .host-page .table-head, .host-page .table-row { grid-template-columns: 34px 34px minmax(150px, 2fr) minmax(90px, 1fr) minmax(85px, 1fr) minmax(95px, 1fr) minmax(150px, 1.4fr); }
 .host-page .table-row { min-height: 66px; }
 .host-page .table-row.is-called { background: #e7f0f6; }
+.host-page .table-head > span:nth-child(5), .host-page .table-row > .status { text-align: center; justify-self: center; }
+.host-page .table-row > .status { justify-content: center; min-width: 116px; }
 .drag-handle { color: #58738a; cursor: grab; font-size: 18px; line-height: 1; user-select: none; touch-action: none; }
 .drag-handle:active { cursor: grabbing; }
 .table-row.is-dragging { opacity: .45; }
