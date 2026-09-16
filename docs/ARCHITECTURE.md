@@ -122,6 +122,9 @@ El proveedor no debe formar parte de la regla de negocio de la cola. En el front
 Despliegue previsto:
 - frontend estático/CDN;
 - FastAPI en Cloud Run;
+- presets de contenedor en `frontend/cloud/` y `backend/cloud/`;
+- `VITE_API_BASE_URL` en build del frontend y `CORS_ORIGINS`/`DATABASE_URL` en runtime del backend;
+- migraciones ejecutadas como operaciÃ³n controlada, no durante el arranque de cada instancia;
 - MySQL administrado;
 - secretos fuera del repositorio;
 - logs estructurados;

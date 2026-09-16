@@ -24,6 +24,21 @@ El objetivo no es reproducir todo el producto diseñado, sino validar el núcleo
 - SQLite para ejecución local.
 - MySQL como destino de producción según la infraestructura indicada.
 
+### Despliegue en Cloud Run
+
+La configuración de contenedores está separada por aplicación:
+
+- `backend/cloud/`: imagen FastAPI/Uvicorn, escucha el puerto `PORT` inyectado por Cloud Run.
+- `frontend/cloud/`: build de Vite servido por Nginx en el puerto `8080`, con fallback para React Router.
+
+El frontend recibe `VITE_API_BASE_URL` como argumento de build. El backend recibe
+`CORS_ORIGINS` y `DATABASE_URL` como variables de entorno. Las instrucciones y
+comandos completos están en los README de cada carpeta `cloud`.
+
+El contenedor no ejecuta migraciones automáticamente. `alembic upgrade head` y
+el seed deben ejecutarse como operación controlada contra la base del entorno.
+SQLite no es persistente en Cloud Run; producción requiere una base administrada.
+
 SQLite reduce configuración durante la prueba sin condicionar el modelo de dominio.
 
 ## 3. Flujo MVP

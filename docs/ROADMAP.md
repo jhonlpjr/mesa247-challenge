@@ -134,7 +134,8 @@ No comenzar salvo que el flujo obligatorio esté terminado:
 - Auditoría.
 
 ### Iteración 4
-- Cloud Run + MySQL.
+- Activar los presets de Cloud Run en `backend/cloud/` y `frontend/cloud/`.
+- Sustituir SQLite por MySQL administrado antes de producciÃ³n.
 - Observabilidad.
 - métricas de negocio;
 - reportes;
