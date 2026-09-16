@@ -107,7 +107,6 @@ No comenzar salvo que el flujo obligatorio esté terminado:
 - WhatsApp automatizado mediante Meta/Twilio.
 - WebSockets.
 - botones interactivos de WhatsApp (“Voy en camino” / “Ya no voy”).
-- drag & drop/reordenamiento manual;
 - email;
 - integración PHP;
 - autenticación completa;
@@ -119,6 +118,7 @@ No comenzar salvo que el flujo obligatorio esté terminado:
 - Reporte diario.
 - Estados `SEATED`, `CANCELLED` y `NO_SHOW`.
 - Enlace WhatsApp manual mediante `wa.me`.
+- Drag & drop visual en la cola del anfitrión.
 
 ### Iteración 2
 - Ciclo completo `CALLED → ON_THE_WAY / CANCELLED / EXPIRED / SEATED`.

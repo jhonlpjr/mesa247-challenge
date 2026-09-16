@@ -103,6 +103,7 @@ Como mínimo:
 - Sentar, cancelar y no-show.
 - Reporte diario.
 - Enlace WhatsApp manual.
+- Drag & drop visual en la cola del anfitrión.
 - Polling.
 - Protección ante llamadas simultáneas.
 - Validaciones y errores básicos.
@@ -110,7 +111,6 @@ Como mínimo:
 ### Fuera del corte
 - WhatsApp automatizado mediante Meta/Twilio.
 - WebSockets.
-- Drag & drop/reordenamiento manual.
 - Emails.
 - Integración con PHP legado.
 - Flujo avanzado de no-show/reintentos.

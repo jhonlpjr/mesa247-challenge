@@ -4,7 +4,7 @@ Mesa247 es una lista de espera digital para restaurantes. El vertical slice obli
 
 ## Alcance
 
-El CORE priorizado es: comensal se une → anfitrión ve la cola → anfitrión llama al siguiente. Incluye además extensiones demostrativas fuera del vertical slice obligatorio: consulta de estado/posición, sentar/cancelar, no-show, reporte diario, polling, persistencia local y representación de notificación WhatsApp mediante enlace `wa.me`. No incluye autenticación, WhatsApp automatizado, WebSockets, drag & drop ni emails.
+El CORE priorizado es: comensal se une → anfitrión ve la cola → anfitrión llama al siguiente. Incluye además extensiones demostrativas fuera del vertical slice obligatorio: consulta de estado/posición, sentar/cancelar, no-show, reporte diario, polling, persistencia local, drag & drop en la vista del anfitrión y representación de notificación WhatsApp mediante enlace `wa.me`. No incluye autenticación, WhatsApp automatizado, WebSockets ni emails.
 
 ## Stack y arquitectura
 

@@ -136,7 +136,7 @@ Se evita acoplar:
 - consistencia al estado del frontend;
 - dominio a SQLite.
 
-Las decisiones deliberadamente simples —polling y monolito pequeño— son fáciles de evolucionar. El drag & drop se mantiene fuera del alcance: la cola muestra exclusivamente el orden devuelto por backend.
+Las decisiones deliberadamente simples —polling y monolito pequeño— son fáciles de evolucionar. El drag & drop de la vista del anfitrión es una extensión demostrativa; la fuente de verdad de la cola y de `call-next` continúa siendo el backend.
 
 
 ## 10. Clean Architecture pragmática
