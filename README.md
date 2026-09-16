@@ -107,6 +107,14 @@ cd ../frontend && npm test
 
 El frontend también se verifica con `npm run build`.
 
+## Despliegue futuro en Cloud Run
+
+Se dejaron contenedores independientes y sus instrucciones en `backend/cloud/`
+y `frontend/cloud/`. El backend usa el puerto `PORT` de Cloud Run; el frontend
+se compila con `VITE_API_BASE_URL` y se sirve con Nginx. Para producción, el
+backend debe usar una base administrada, porque el almacenamiento local de Cloud
+Run es efímero.
+
 ## Decisiones y evolución
 
 Se eligieron estado local y polling silencioso de 10 segundos para mantener el MVP pequeño y tolerante a conexiones inestables. Las vistas de comensal y anfitrión son rutas independientes; no existe un selector de rol en la interfaz. `call-next` usa lock de proceso y actualización condicional en SQLite; en MySQL se evolucionaría a una transacción con bloqueo de filas (`SELECT ... FOR UPDATE`) o equivalente atómico. La evolución prevista incluye autenticación/roles, estados completos, notificaciones desacopladas, WebSockets si el volumen lo justifica, MySQL y observabilidad.
