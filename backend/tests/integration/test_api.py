@@ -18,19 +18,29 @@ def test_queue_api_and_persistence():
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     with Session() as db:
-        db.add(RestaurantModel(id=1, name="Demo", created_at=datetime.now(timezone.utc))); db.commit()
+        db.add(RestaurantModel(id=1, name="Demo A", created_at=datetime.now(timezone.utc)))
+        db.add(RestaurantModel(id=2, name="Demo B", created_at=datetime.now(timezone.utc))); db.commit()
     app.dependency_overrides[get_db] = lambda: Session()
     try:
         client = TestClient(app)
         created = client.post("/restaurants/1/queue", json={"name": "Ana", "phone": "999999999", "party_size": 2})
         assert created.status_code == 201
         entry_id = created.json()["id"]
-        assert client.get("/restaurants/1/queue").json()["entries"][0]["position"] == 1
+        second = client.post("/restaurants/1/queue", json={"name": "Jorge", "phone": "888888888", "party_size": 2})
+        other = client.post("/restaurants/2/queue", json={"name": "Pedro", "phone": "777777777", "party_size": 2})
+        assert second.status_code == 201 and other.status_code == 201
+        second_id = second.json()["id"]
+        assert [entry["position"] for entry in client.get("/restaurants/1/queue").json()["entries"]] == [1, 2]
+        assert client.get("/restaurants/2/queue").json()["entries"][0]["name"] == "Pedro"
         called = client.post("/restaurants/1/queue/call-next")
         assert called.status_code == 200 and called.json()["status"] == "CALLED"
         assert called.json()["called_at"] is not None
         assert client.get(f"/queue/{entry_id}").json()["position"] is None
+        assert client.get(f"/queue/{second_id}").json()["position"] == 1
+        assert client.get("/restaurants/2/queue").json()["entries"][0]["status"] == "WAITING"
+        assert client.post("/restaurants/1/queue/call-next").status_code == 200
         assert client.post("/restaurants/1/queue/call-next").status_code == 404
+        assert client.post(f"/queue/{entry_id}/call").status_code == 409
     finally:
         app.dependency_overrides.clear()
 

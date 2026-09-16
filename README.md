@@ -1,10 +1,10 @@
 # Mesa247 Waiting List
 
-Mesa247 es una lista de espera digital para restaurantes. El MVP permite que un comensal se registre, consulte su posición y que un anfitrión visualice la cola y llame al siguiente grupo.
+Mesa247 es una lista de espera digital para restaurantes. El vertical slice obligatorio permite que un comensal se registre, el anfitrión visualice la cola y llame al siguiente grupo.
 
 ## Alcance
 
-Incluye registro de comensales, consulta de estado/posición, cola activa del anfitrión, llamada del siguiente, sentar/cancelar, reporte diario, polling y persistencia local. No incluye autenticación, WhatsApp, WebSockets, drag & drop ni emails.
+El CORE priorizado es: comensal se une → anfitrión ve la cola → anfitrión llama al siguiente. Incluye además extensiones demostrativas fuera del vertical slice obligatorio: consulta de estado/posición, sentar/cancelar, no-show, reporte diario, polling, persistencia local y representación de notificación WhatsApp mediante enlace `wa.me`. No incluye autenticación, WhatsApp automatizado, WebSockets, drag & drop ni emails.
 
 ## Stack y arquitectura
 
@@ -82,7 +82,7 @@ CORS_ORIGINS=http://localhost:5173
 VITE_API_BASE_URL=http://localhost:8000
 ```
 
-La migración inicial crea `restaurants` y `queue_entries`, con índices, constraints y relación. La posición no se persiste: se calcula ordenando entradas `WAITING` por llegada. `python -m app.seed` crea tres restaurantes demo determinísticos: `1` La Terraza Azul (PE, America/Lima), `2` Mesa247 Demo Norte (PE, America/Lima) y `3` Mesa247 Demo Internacional (CL, America/Santiago). No inserta datos de prueba en las migraciones.
+La migración inicial crea `restaurants` y `queue_entries`, con índices, constraints y relación. La posición no se persiste: se calcula ordenando entradas `WAITING` por llegada. `python -m app.seed` crea tres restaurantes demo determinísticos: `1` La Terraza Azul (PE, America/Lima), `2` Cuatro Vientos (PE, America/Lima) y `3` Casa Mediterránea (CL, America/Santiago). No inserta datos de prueba en las migraciones.
 
 Las fechas operativas se calculan en el timezone configurado del restaurante a partir de timestamps persistidos en UTC. El teléfono se normaliza a formato internacional (`+51...` o `+56...`) según el restaurante. El reporte diario está disponible en `GET /restaurants/{id}/reports/daily?date=YYYY-MM-DD` y calcula la espera media únicamente para entradas sentadas.
 

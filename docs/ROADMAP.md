@@ -102,13 +102,12 @@ Priorizar tests backend de reglas críticas si queda tiempo.
 - Confirmar que el repo arranca desde cero.
 - Registrar trade-offs y trabajo futuro.
 
-## Fuera del MVP
+## Fuera del vertical slice obligatorio
 No comenzar salvo que el flujo obligatorio esté terminado:
-- WhatsApp real.
+- WhatsApp automatizado mediante Meta/Twilio.
 - WebSockets.
-- respuestas “Voy en camino” / “Ya no voy”.
-- drag & drop;
-- reportes;
+- botones interactivos de WhatsApp (“Voy en camino” / “Ya no voy”).
+- drag & drop/reordenamiento manual;
 - email;
 - integración PHP;
 - autenticación completa;
@@ -116,6 +115,11 @@ No comenzar salvo que el flujo obligatorio esté terminado:
 - UI avanzada.
 
 ## Después del MVP
+### Extensiones ya demostradas fuera del vertical slice
+- Reporte diario.
+- Estados `SEATED`, `CANCELLED` y `NO_SHOW`.
+- Enlace WhatsApp manual mediante `wa.me`.
+
 ### Iteración 2
 - Ciclo completo `CALLED → ON_THE_WAY / CANCELLED / EXPIRED / SEATED`.
 - Regla explícita de 10 minutos.

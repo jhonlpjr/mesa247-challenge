@@ -75,7 +75,7 @@ Devuelve estado y posición actual.
 
 ### Anfitrión
 `GET /restaurants/{restaurant_id}/queue`
-Devuelve la cola activa ordenada por llegada.
+Devuelve la cola activa ordenada por llegada. La posición solo cuenta entradas `WAITING`; las entradas `CALLED` no desplazan a quienes siguen esperando.
 
 `POST /restaurants/{restaurant_id}/queue/call-next`
 Selecciona de forma segura el siguiente `WAITING`, lo cambia a `CALLED` y registra `called_at`.
@@ -116,7 +116,7 @@ CallNext
        └─ Twilio
 ```
 
-El proveedor no debe formar parte de la regla de negocio de la cola.
+El proveedor no debe formar parte de la regla de negocio de la cola. En el frontend existe una representación provisional mediante enlace `wa.me`; no es una integración automática con Meta ni Twilio.
 
 ## 8. Evolución a producción
 Despliegue previsto:
@@ -136,7 +136,7 @@ Se evita acoplar:
 - consistencia al estado del frontend;
 - dominio a SQLite.
 
-Las decisiones deliberadamente simples —polling y monolito pequeño— son fáciles de evolucionar.
+Las decisiones deliberadamente simples —polling y monolito pequeño— son fáciles de evolucionar. El drag & drop se mantiene fuera del alcance: la cola muestra exclusivamente el orden devuelto por backend.
 
 
 ## 10. Clean Architecture pragmática

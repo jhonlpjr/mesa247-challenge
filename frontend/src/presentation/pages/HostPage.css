@@ -1,12 +1,9 @@
 .host-page .host-heading { align-items: center; }
 .host-page .host-heading .intro { margin-top: 8px; }
 .host-page .queue-table { border-radius: 16px; }
-.host-page .table-head, .host-page .table-row { grid-template-columns: 34px 34px minmax(150px, 2fr) minmax(90px, 1fr) minmax(85px, 1fr) minmax(95px, 1fr) minmax(150px, 1.4fr); }
+.host-page .table-head, .host-page .table-row { grid-template-columns: 34px minmax(150px, 2fr) minmax(90px, 1fr) minmax(85px, 1fr) minmax(95px, 1fr) minmax(150px, 1.4fr); }
 .host-page .table-row { min-height: 66px; }
 .host-page .table-row.is-called { background: #e7f0f6; }
-.drag-handle { color: #58738a; cursor: grab; font-size: 18px; line-height: 1; user-select: none; touch-action: none; }
-.drag-handle:active { cursor: grabbing; }
-.table-row.is-dragging { opacity: .45; }
 .row-actions { display: flex; gap: 6px; flex-wrap: wrap; }
 .row-actions button { padding: 8px 10px; font-size: 11px; }
 .row-actions button:not(:first-child) { background: #fff; color: #151b22; border-color: #c4d0d9; }
@@ -20,6 +17,6 @@
 }
 @media (max-width: 680px) {
   .host-page .host-heading .intro { margin-bottom: 0; }
-  .host-page .table-head, .host-page .table-row { grid-template-columns: 28px 28px 150px 90px 85px 95px 150px; }
+  .host-page .table-head, .host-page .table-row { grid-template-columns: 28px 150px 90px 85px 95px 150px; }
   .host-page .table-row { padding: 12px; }
 }

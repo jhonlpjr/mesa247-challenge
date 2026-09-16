@@ -1,9 +1,6 @@
 .entry-card { text-align: center; }
 .entry-kicker { color: #58738a; font-size: 12px; margin: 8px 0 0; }
 .entry-position { font-size: 63px; line-height: 1; margin: 4px 0 20px; letter-spacing: -4px; }
-.estimate { display: grid; gap: 8px; color: #71818e; font-size: 12px; margin-bottom: 10px; }
-.estimate strong { color: #151b22; font-size: 15px; }
-.estimate-bar { height: 5px; background: #e1e7eb; border-radius: 99px; overflow: hidden; margin: 0 0 12px; text-align: left; }
-.estimate-bar span { display: block; height: 100%; background: #28678f; border-radius: inherit; transition: width .3s ease; }
+.position-label { color: #71818e; font-size: 12px; margin: -14px 0 20px; }
 .leave-button { margin-top: 18px; }
 .entry-link { display: block; padding: 13px 18px; margin-top: 22px; }

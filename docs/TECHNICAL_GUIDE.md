@@ -1,7 +1,7 @@
 # Mesa247 Waiting List — Guía Técnica MVP
 
 ## 1. Objetivo
-Implementar un vertical slice funcional del sistema de lista de espera:
+Implementar el vertical slice obligatorio del sistema de lista de espera:
 
 **Comensal se registra → entra a la cola → anfitrión visualiza la cola → anfitrión llama al siguiente comensal.**
 
@@ -48,7 +48,7 @@ SQLite reduce configuración durante la prueba sin condicionar el modelo de domi
 
 `called_at` permite controlar posteriormente la tolerancia de 10 minutos.
 
-Estados como `ON_THE_WAY`, `CANCELLED`, `SEATED` o `NO_SHOW` quedan para iteraciones posteriores.
+`CANCELLED`, `SEATED` y `NO_SHOW` están implementados como extensiones demostrativas fuera del vertical slice obligatorio. `ON_THE_WAY` queda para una iteración posterior.
 
 ## 5. Sincronización
 El MVP utilizará polling silencioso cada **10 segundos**, además de refrescar inmediatamente después de cada operación. La vista de comensal y la vista de anfitrión son rutas independientes; la UI no incluye un selector de roles.
@@ -73,7 +73,7 @@ Al llamar:
 Se consideran 10 minutos de tolerancia según el flujo comunicado al comensal. El MVP evita introducir workers o cron jobs únicamente para esta regla.
 
 ## 9. WhatsApp
-La integración real queda fuera del primer corte porque introduce decisiones y dependencias adicionales:
+La integración real queda fuera del primer corte porque introduce decisiones y dependencias adicionales. Actualmente solo se representa el flujo mediante un enlace `wa.me` que el anfitrión confirma manualmente:
 - Meta, Twilio u otro proveedor;
 - templates aprobados;
 - costos por país;
@@ -93,20 +93,25 @@ Como mínimo:
 - errores inesperados.
 
 ## 11. Scope
-### Incluido
+### CORE obligatorio
 - Registro del comensal.
-- Consulta de posición/estado.
 - Cola activa del anfitrión.
 - Llamar al siguiente.
+
+### Extensiones demostrativas fuera del vertical slice obligatorio
+- Consulta de posición/estado.
+- Sentar, cancelar y no-show.
+- Reporte diario.
+- Enlace WhatsApp manual.
 - Polling.
 - Protección ante llamadas simultáneas.
 - Validaciones y errores básicos.
 
 ### Fuera del corte
-- WhatsApp real.
+- WhatsApp automatizado mediante Meta/Twilio.
 - WebSockets.
 - Drag & drop/reordenamiento manual.
-- Reportes y emails.
+- Emails.
 - Integración con PHP legado.
 - Flujo avanzado de no-show/reintentos.
 

@@ -48,7 +48,16 @@ def get_entry(entry_id: int, db: Session = Depends(get_db)):
 @router.get("/restaurants/{restaurant_id}/queue", response_model=QueueResponse, tags=["Cola · Operación"], summary="Listar cola activa", description="Lista los grupos WAITING y CALLED del día operativo local del restaurante.")
 def get_queue(restaurant_id: int, db: Session = Depends(get_db)):
     restaurants, queue = repos(db)
-    try: return QueueResponse(entries=[QueueEntryResponse.model_validate(e).model_copy(update={"position": i if e.status == QueueStatus.WAITING else None}) for i, e in enumerate(GetRestaurantQueue(restaurants, queue).execute(restaurant_id), 1)])
+    try:
+        entries = []
+        waiting_position = 0
+        for entry in GetRestaurantQueue(restaurants, queue).execute(restaurant_id):
+            position = None
+            if entry.status == QueueStatus.WAITING:
+                waiting_position += 1
+                position = waiting_position
+            entries.append(QueueEntryResponse.model_validate(entry).model_copy(update={"position": position}))
+        return QueueResponse(entries=entries)
     except NotFoundError as exc: raise HTTPException(404, str(exc))
 
 
